@@ -13,4 +13,4 @@ COPY . .
 RUN rustup default nightly-2019-09-13
 RUN cargo build --release
 
-CMD ROCKET_PORT=$PORT cargo run --release
+CMD ROCKET_PORT=$PORT ./target/release/sos-page
