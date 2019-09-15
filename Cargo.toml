@@ -7,7 +7,6 @@ edition = "2018"
 [dependencies]
 rocket = "0.4.2"
 # rocket_codegen = "0.4.2"
-# rocket_contrib = "0.4.2"
 rocket-include-static-resources = "*"
 serde = "1.0"
 serde_derive = "1.0"

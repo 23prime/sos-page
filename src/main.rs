@@ -74,7 +74,6 @@ fn blog() -> Template {
         img_path: "./images/under_construction.jpg"
     };
 
-    // return "Member blog".to_string();
     return Template::render("blog", &context);
 }
 
