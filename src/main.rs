@@ -18,20 +18,17 @@ fn establis_connection() -> Connection {
     return Connection::connect(db_url, TlsMode::None).unwrap();
 }
 
-fn get_counter(conn: &Connection) -> u32 {
+fn get_counter(conn: &Connection) -> i32 {
     let q = "SELECT counter FROM access_counter;";
     let rows = conn.query(q, &[]).unwrap();
-    let value: u32 = rows.get(0).get(0);
+    let value: i32 = rows.get(0).get(0);
     return value
 }
 
-fn update_counter(conn: &Connection, num: u32) {
+fn update_counter(conn: &Connection, num: i32) {
    let q = format!("UPDATE access_counter set counter = {}", num);
    conn.execute(&q, &[]).unwrap();
 }
-
-pub static mut COUNTER: u64 = 0;
-
 
 
 // For main
@@ -57,7 +54,7 @@ struct HRef {
 
 #[derive(Serialize)]
 struct TemplateContext {
-    counter: u32,
+    counter: i32,
     refs: Vec<HRef>
 }
 
