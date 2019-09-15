@@ -3,14 +3,16 @@ FROM liuchong/rustup:stable
 
 LABEL Name=sos-page Version=1.0.0
 
-RUN apt update
-RUN apt install -y curl
 ENV PATH $PATH:~/.cargo/bin
-
-WORKDIR /app
-COPY . .
+ENV CARGO_BUILD_TARGET_DIR=/tmp/target
 
 RUN rustup default nightly-2019-09-13
+
+WORKDIR /app
+COPY Cargo.toml Cargo.lock ./
+RUN mkdir -p src/
+RUN touch src/lib.rs
 RUN cargo build --release
+COPY . .
 
 CMD ROCKET_PORT=$PORT ./target/release/sos-page

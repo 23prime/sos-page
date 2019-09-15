@@ -1,7 +1,7 @@
 version: '2.1'
 
 services:
-  gokabot-line:
+  sos-page:
     image: sos-page
     build:
       context: .
