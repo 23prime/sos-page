@@ -1,0 +1,19 @@
+[package]
+name = "sos-page"
+version = "0.1.0"
+authors = ["23prime <23.prime.37@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+rocket = "0.4.2"
+# rocket_codegen = "0.4.2"
+# rocket_contrib = "0.4.2"
+rocket-include-static-resources = "*"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+
+[dependencies.rocket_contrib]
+version = "*"
+default-features = false
+features = ["tera_templates"]

@@ -1,0 +1,8 @@
+{% extends "base" %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <p class="resize">
+        <img src="{{img_path}}">
+    </p>
+{% endblock content %}
