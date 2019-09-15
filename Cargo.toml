@@ -11,6 +11,8 @@ rocket-include-static-resources = "*"
 serde = "1.0"
 serde_derive = "1.0"
 serde_json = "1.0"
+postgres = "0.15.2"
+dotenv = "0.14.1"
 
 [dependencies.rocket_contrib]
 version = "*"

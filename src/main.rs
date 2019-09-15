@@ -1,11 +1,44 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 #![feature(plugin)]
 
+
+// For DB
+extern crate dotenv;
+extern crate postgres;
+
+use std::env;
+use dotenv::dotenv;
+use postgres::{Connection, TlsMode};
+
+
+fn establis_connection() -> Connection {
+    dotenv().ok();
+
+    let db_url = env::var("DATABASE_URL").unwrap();
+    return Connection::connect(db_url, TlsMode::None).unwrap();
+}
+
+fn get_counter(conn: &Connection) -> u32 {
+    let q = "SELECT counter FROM access_counter;";
+    let rows = conn.query(q, &[]).unwrap();
+    let value: u32 = rows.get(0).get(0);
+    return value
+}
+
+fn update_counter(conn: &Connection, num: u32) {
+   let q = format!("UPDATE access_counter set counter = {}", num);
+   conn.execute(&q, &[]).unwrap();
+}
+
+pub static mut COUNTER: u64 = 0;
+
+
+
+// For main
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate serde_derive;
 #[macro_use] extern crate rocket_include_static_resources;
 
-#[cfg(test)] mod tests;
 
 use std::collections::HashMap;
 
@@ -13,6 +46,8 @@ use rocket::Request;
 use rocket_contrib::templates::Template;
 use rocket_include_static_resources::StaticResponse;
 
+// mod counter;
+// use counter::*;
 
 #[derive(Serialize)]
 struct HRef {
@@ -22,7 +57,7 @@ struct HRef {
 
 #[derive(Serialize)]
 struct TemplateContext {
-    counter: u64,
+    counter: u32,
     refs: Vec<HRef>
 }
 
@@ -32,24 +67,23 @@ struct UnderConstContext {
     img_path: &'static str
 }
 
-static mut COUNTER: u64 = 0;
-
 #[get("/")]
 fn root() -> Template {
-    unsafe {
-        COUNTER += 1;
+    let conn = establis_connection();
+    let mut counter = get_counter(&conn);
+    counter += 1;
+    update_counter(&conn, counter);
 
-        let context = TemplateContext {
-            counter: COUNTER,
-            refs: vec![
-                HRef {name: "Discography", link: "./discography"},
-                HRef {name: "Member Blog", link: "./blog"},
-            ],
+    let context = TemplateContext {
+        counter: counter,
+        refs: vec![
+            HRef {name: "Discography", link: "./discography"},
+            HRef {name: "Member Blog", link: "./blog"},
+        ],
 
-        };
+    };
 
-        return Template::render("root", &context);
-    }
+    return Template::render("root", &context);
 }
 
 #[get("/favicon.ico")]
