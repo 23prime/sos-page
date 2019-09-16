@@ -5,14 +5,12 @@ extern crate serde_derive;
 use std::collections::HashMap;
 use rocket::Request;
 use rocket_contrib::templates::Template;
-use rocket_include_static_resources::StaticResponse;
+
+use std::io;
+use rocket::response::NamedFile;
 
 // Macros
 use rocket::{get, routes, catch, catchers};
-use rocket_include_static_resources::{
-    static_response,
-    static_resources_initialize
-};
 use serde_derive::Serialize;
 
 // Local
@@ -53,18 +51,18 @@ fn root() -> Template {
 }
 
 #[get("/favicon.ico")]
-fn favicon() -> StaticResponse {
-   static_response!("favicon")
+fn favicon() -> io::Result<NamedFile> {
+    NamedFile::open("favicon.ico")
 }
 
 #[get("/images/under_construction.jpg")]
-fn under_construction_jpg() -> StaticResponse {
-   static_response!("under_construction_jpg")
+fn under_construction_jpg() -> io::Result<NamedFile> {
+    NamedFile::open("images/under_construction.jpg")
 }
 
 #[get("/CSS/under_construction.css")]
-fn under_construction_css() -> StaticResponse {
-   static_response!("under_construction_css")
+fn under_construction_css() -> io::Result<NamedFile> {
+    NamedFile::open("CSS/under_construction.css")
 }
 
 #[get("/blog")]
@@ -107,13 +105,5 @@ pub fn rocket() -> rocket::Rocket {
     rocket::ignite()
         .mount("/", rts)
         .attach(Template::fairing())
-        .attach(StaticResponse::fairing(|resources| {
-            static_resources_initialize!(
-                resources,
-                "favicon", "/favicon.ico",
-                "under_construction_jpg", "/images/under_construction.jpg",
-                "under_construction_css", "/CSS/under_construction.css"
-            );
-        }))
         .register(catchers![not_found])
 }
