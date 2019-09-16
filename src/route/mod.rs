@@ -3,10 +3,9 @@ extern crate rocket_include_static_resources;
 extern crate serde_derive;
 
 use std::collections::HashMap;
+use std::path::{Path, PathBuf};
 use rocket::Request;
 use rocket_contrib::templates::Template;
-
-use std::io;
 use rocket::response::NamedFile;
 
 // Macros
@@ -50,19 +49,9 @@ fn root() -> Template {
     return Template::render("root", &context);
 }
 
-#[get("/favicon.ico")]
-fn favicon() -> io::Result<NamedFile> {
-    NamedFile::open("favicon.ico")
-}
-
-#[get("/images/under_construction.jpg")]
-fn under_construction_jpg() -> io::Result<NamedFile> {
-    NamedFile::open("images/under_construction.jpg")
-}
-
-#[get("/CSS/under_construction.css")]
-fn under_construction_css() -> io::Result<NamedFile> {
-    NamedFile::open("CSS/under_construction.css")
+#[get("/<file..>")]
+fn files(file: PathBuf) -> Option<NamedFile> {
+    return NamedFile::open(Path::new("static/").join(file)).ok();
 }
 
 #[get("/blog")]
@@ -94,12 +83,10 @@ fn not_found(req: &Request<'_>) -> Template {
 
 pub fn rocket() -> rocket::Rocket {
     let rts = routes![
-        favicon,
         root,
         blog,
         discography,
-        under_construction_jpg,
-        under_construction_css
+        files
     ];
 
     rocket::ignite()

@@ -5,6 +5,7 @@
     <title>404</title>
   </head>
   <body style="text-align: center">
-    <h1>404: ありませ〜んｗｗｗｗｗｗｗ</h1>
+    <div id='NotFound'></div>
+    <script src="/assets/bundle.js"></script>
   </body>
 </html>
