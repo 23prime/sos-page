@@ -14,7 +14,7 @@
     </div>
 
     <div class="right">
-        <a class="twitter-timeline" data-width="320" data-dnt="true" data-theme="dark" href="https://twitter.com/Stream_of_Semen?ref_src=twsrc%5Etfw">Tweets by Stream_of_Semen</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <a class="twitter-timeline" data-width="320" data-height="640" data-dnt="true" data-theme="dark" href="https://twitter.com/Stream_of_Semen?ref_src=twsrc%5Etfw">Tweets by Stream_of_Semen</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 
 {% endblock content %}
