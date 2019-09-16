@@ -5,9 +5,12 @@
     <title>Stream of Semen</title>
     <link rel=”shortcut icon” href=”/favicon.ico”>
     <link rel="stylesheet" type="text/css" href="./css/under_construction.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
   </head>
   <body style="text-align: center">
     {% block content %}{% endblock content %}
-    <p><small>© 2019 Stream of Semen</small></p>
+    <div class="under">
+      <p><small>© 2019 Stream of Semen</small></p>
+    </div>
 </body>
 </html>
