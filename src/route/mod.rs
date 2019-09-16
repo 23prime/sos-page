@@ -35,7 +35,7 @@ struct UnderConstContext {
 }
 
 #[get("/")]
-fn root() -> Template {
+fn index() -> Template {
     let counter = count();
     let context = TemplateContext {
         counter: counter,
@@ -46,7 +46,7 @@ fn root() -> Template {
 
     };
 
-    return Template::render("root", &context);
+    return Template::render("index", &context);
 }
 
 #[get("/<file..>")]
@@ -83,7 +83,7 @@ fn not_found(req: &Request<'_>) -> Template {
 
 pub fn rocket() -> rocket::Rocket {
     let rts = routes![
-        root,
+        index,
         blog,
         discography,
         files
