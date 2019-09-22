@@ -1,3 +1,42 @@
+.marquee {
+    margin: 10pt;
+    padding-left: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-duration:12s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+}
+@keyframes marquee {
+    from   { transform: translate(0%);} 
+    100%,to { transform: translate(-100%);}
+}
+
+.counter-bg {
+    margin: 2pt;
+    font-size: 24pt;
+    color: lightgreen;
+    background-color: black;
+    font-family: monospace;
+}
+
+.counter {
+    animation: 2s linear infinite blink;
+}
+@keyframes blink {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
 .left {
     float: left;
     width: 45%;

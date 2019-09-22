@@ -2,7 +2,12 @@
 
 {% block content %}
     <h1>SoSのページへようこそ！</h1>
-    <p>あなたは{{counter}}人目の訪問者です。</p>
+    <div class="marquee">
+        <p>あなたは<span class="counter-bg">
+            <span class="counter">{{counter}}</span>
+        </span>
+        人目の訪問者です。</p>
+    </div>
 
     <div class="left">
         <h2>Contents</h2>
