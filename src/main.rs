@@ -1,8 +1,8 @@
 #![feature(proc_macro_hygiene, decl_macro)]
 #![feature(plugin)]
 
-mod route;
-use route::rocket;
+mod routes;
+use routes::rocket;
 
 fn main() {
     rocket().launch();
