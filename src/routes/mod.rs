@@ -9,9 +9,16 @@ mod statics;
 mod not_found;
 
 #[derive(Serialize)]
-struct UnderConstContext {
+pub struct HRef {
+    name: &'static str,
+    link: &'static str
+}
+
+#[derive(Serialize)]
+pub struct UnderConstContext {
     title: &'static str,
-    img_path: &'static str
+    img_path: &'static str,
+    refs: Vec<HRef>
 }
 
 pub fn rocket() -> rocket::Rocket {

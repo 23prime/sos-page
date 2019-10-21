@@ -7,8 +7,25 @@
     <link rel="stylesheet" type="text/css" href="./css/under_construction.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
   </head>
-  <body style="text-align: center">
-    {% block content %}{% endblock content %}
+
+  <body>
+    <header>
+    <a href="/">
+      <div class="logo">
+        <img src="./images/sos_logo01.png" height="30mm">
+      </div>
+    </a>
+
+      <ul>
+        {% for ref in refs %}
+          <a href="{{ref.link}}"><li>{{ref.name}}</li></a>
+        {% endfor %}
+      </ul>
+    </header>
+
+    {% block content %}
+    {% endblock content %}
+
     <div class="under">
       <p><small>© 2019 Stream of Semen</small></p>
     </div>

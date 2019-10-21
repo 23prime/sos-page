@@ -5,11 +5,8 @@ use serde_derive::Serialize;
 mod counter;
 use counter::*;
 
-#[derive(Serialize)]
-struct HRef {
-    name: &'static str,
-    link: &'static str
-}
+// use super::{HRef, REFS};
+use super::HRef;
 
 #[derive(Serialize)]
 struct TemplateContext {
@@ -22,11 +19,11 @@ pub fn index() -> Template {
     let counter = count();
     let context = TemplateContext {
         counter: counter,
+        // refs: REFS
         refs: vec![
             HRef {name: "Discography", link: "./discography"},
             HRef {name: "Member Blog", link: "./blog"},
         ],
-
     };
 
     return Template::render("index", &context);
