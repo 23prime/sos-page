@@ -1,32 +1,30 @@
 {% extends "base" %}
 
 {% block content %}
-  <div class="inline">
-    <div class="marquee">
-      <p>あなたは<span class="counter-bg">
-        <span class="counter">{{counter}}</span>
-      </span>
-      人目の訪問者です。</p>
+  <div class="visitor">
+    <p>あなたは<span class="counter-bg">
+      <span class="counter">{{counter}}</span>
+    </span>
+    人目の訪問者です。</p>
+  </div>
+
+  <div class="left">
+    <h1>SoS のページへようこそ！</h1>
+
+    <p>2011年に結成された女子高生バンド Stream of Semen です！
+    <p>1st シングル「おぉぉおﾞおﾞ～っ！！イグゥウ！！イッグゥウウ！！」大好評配信中！</p>
+
+    <div class="members">
+      <ul>
+        <li>Gt./Ba. (<a href="https://twitter.com/nesouda">@nesouda</a>)
+        <li>Vo. (<a href="https://twitter.com/23_prime">@23_prime</a>)
+        <li>Ba./Dr. (<a href="https://twitter.com/saimu1da3">@saimu1da3</a>)
+      </ul>
     </div>
+  </div>
 
-    <div class="left">
-      <h1>SoS のページへようこそ！</h1>
-
-      <p>2011年に結成された女子高生バンド Stream of Semen です！
-      <p>1st シングル「おぉぉおﾞおﾞ～っ！！イグゥウ！！イッグゥウウ！！」大好評配信中！</p>
-
-      <div class="members">
-        <ul>
-          <li>Gt./Ba. (<a href="https://twitter.com/nesouda">@nesouda</a>)
-            <li>Vo. (<a href="https://twitter.com/23_prime">@23_prime</a>)
-          <li>Ba./Dr. (<a href="https://twitter.com/saimu1da3">@saimu1da3</a>)
-        </ul>
-      </div>
-    </div>
-
-    <div class="right">
-      <a class="twitter-timeline" data-width="320" data-height="640" data-dnt="true" data-theme="dark" href="https://twitter.com/Stream_of_Semen?ref_src=twsrc%5Etfw">Tweets by Stream_of_Semen</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
+  <div class="right">
+    <a class="twitter-timeline" data-width="320" data-height="640" data-dnt="true" data-theme="dark" href="https://twitter.com/Stream_of_Semen?ref_src=twsrc%5Etfw">Tweets by Stream_of_Semen</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 
 {% endblock content %}
