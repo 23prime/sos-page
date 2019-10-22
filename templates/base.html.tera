@@ -10,11 +10,11 @@
 
   <body>
     <header>
-    <a href="/">
       <div class="logo">
-        <img src="./images/sos_logo01.png" height="30mm">
+        <a href="/">
+            <img src="./images/sos_logo01.png" height="35pt">
+        </a>
       </div>
-    </a>
 
       <ul>
         {% for ref in refs %}

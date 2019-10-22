@@ -1,7 +1,7 @@
 header {
     position: fixed;
     width: 100%;
-    height: 33pt;
+    height: 35pt;
     background-color: white;
     border-bottom: 1px lightgray solid;
     z-index: 9999;
@@ -16,9 +16,10 @@ header {
 
 header ul li {
     display: inline-block;
-    margin: 10pt -2pt -5pt -2pt;
-    padding: 8pt 5pt 0 5pt;
-    height: 31pt;
+    margin: 10pt 2pt 0pt -4pt;
+    padding: 0pt 5pt 0 5pt;
+    height: 35pt;
+    line-height: 35pt;
 }
 
 header ul li:hover {
