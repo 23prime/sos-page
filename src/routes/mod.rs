@@ -14,11 +14,24 @@ pub struct HRef {
     link: &'static str
 }
 
+type HRefs = [HRef; 2];
+
+pub static REFS: HRefs = [
+    HRef {name: "Discography", link: "./discography"},
+    HRef {name: "Member Blog", link: "./blog"}
+];
+
 #[derive(Serialize)]
 pub struct UnderConstContext {
     title: &'static str,
     img_path: &'static str,
-    refs: Vec<HRef>
+    refs: &'static HRefs
+}
+
+#[derive(Serialize)]
+struct IndexContext {
+    counter: i32,
+    refs: &'static HRefs
 }
 
 pub fn rocket() -> rocket::Rocket {
